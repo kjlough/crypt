@@ -1,2 +1,4 @@
 .idea
 */.idea
+PythonSuite/__pycache__/*
+PythonSuite/output/*
