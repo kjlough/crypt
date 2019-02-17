@@ -1,0 +1,23 @@
+.gwt-TextBox-ok {
+ color:green;
+ font-weight:bold;
+}
+
+.gwt-TextBox-error {
+ color:red;
+ font-weight:bold;
+## background-color:yellow;
+}
+
+.gwt-table {
+  border: 1px solid black;
+}
+
+.gwt-table tr:nth-child(even) {
+  background-color: #EEEEEE;
+}
+
+.center-div {
+    margin: 0 auto;
+    width: 1000px;
+}
