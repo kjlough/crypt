@@ -1,8 +1,4 @@
 class ClassicalCipher:
-    plaintext = ""
-    ciphertext = ""
-
-    # ---------------- Classic Cipher Methods ----------------
     # TODO: add cipher type? (Transposition or substitution)
     def __init__(self, plaintext="", ciphertext=""):
         self.plaintext = plaintext

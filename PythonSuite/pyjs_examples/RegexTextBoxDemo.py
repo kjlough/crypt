@@ -1,11 +1,10 @@
 import pyjd  # dummy in pyjs
 
-from pyjamas import Window, DOM
 from pyjamas.ui.FlexTable import FlexTable
 from pyjamas.ui.RootPanel import RootPanel
 from pyjamas.ui.VerticalPanel import VerticalPanel
 from pyjamas.ui.HTML import HTML
-from RegexTextBox import RegexTextBox
+from pyjs_examples.RegexTextBox import RegexTextBox
 
 
 def display_ok(obj):

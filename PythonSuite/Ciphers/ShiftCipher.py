@@ -1,29 +1,63 @@
-from Ciphers.ClassicalCipher import  ClassicalCipher
-from Ciphers.Helpers import *
+from Ciphers.Cipher import *
+from Ciphers.HelperMethods import *
+import re
 
 
-class Shift(ClassicalCipher):
+class ClassicalShift(ClassicalCipher):
+    """
+        This class will only shift letters of the
+        alphabet just like the classical cipher. The
+        code is intended to replicate the process of
+        encrypting a message with pen and paper.
+    """
 
     def __init__(self, key, plaintext="", ciphertext=""):
-        ClassicalCipher(plaintext, ciphertext)
+        super(ClassicalShift, self).__init__(plaintext, ciphertext)
         self.key = key;
 
     def encrypt(self):
-        # Clear ciphertext:
         self.ciphertext = ""
 
         for index, char in enumerate(self.plaintext):
-            # TODO: use regex to only operate on word characters
-            if char != " " and char != ".":
-                # TODO: make code clear so that we don't use random numbers like '97' below
-                # in this case the '97' is the start of the lowercase ascii range
-                # also note that this code is meant to replicate the process of encrypting via pen and paper, not to be the most efficient.
-                self.ciphertext += numToCharDict[(ord(char) + self.key - 97) % ENGLISH_ALPHABET_LENGTH]
+            # Shift only on the regex word characters (letters of the alphabet)
+            if re.match(r'\w', char):
+                self.ciphertext += numToCharDict[(charToNumDict[char] - self.key) % ENGLISH_ALPHABET_LENGTH]
             else:
                 self.ciphertext += char
 
     def decrypt(self):
-        # TODO: Fill out decrypt method
+        self.plaintext = ""
+
+        for index, char in enumerate(self.ciphertext):
+            # Shift only on the regex word characters (letters of the alphabet)
+            if re.match(r'\w', char):
+                self.plaintext += numToCharDict[(charToNumDict[char] + self.key) % ENGLISH_ALPHABET_LENGTH]
+            else:
+                self.plaintext += char
+
+        return
+
+    def break_cipher(self):
+        # TODO: fill out method.
+        return
+
+
+class ASCII_Shift(ClassicalCipher):
+    """
+        This class will shift over all printable characters
+        in the ascii table (including spaces but excluding tabs and
+        newlines etc.)
+    """
+
+    def __init__(self, key, plaintext="", ciphertext=""):
+        super(ASCII_Shift, self).__init__(plaintext, ciphertext)
+        self.key = key
+
+    def encrypt(self):
+        self.ciphertext = str.translate(self.plaintext, get_maketrans_table(self.key))
+
+    def decrypt(self):
+        self.plaintext = str.translate(self.ciphertext, get_maketrans_table(0 - self.key))
         return
 
     def break_cipher(self):
