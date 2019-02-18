@@ -1,0 +1,5 @@
+.idea
+*/.idea
+PythonSuite/__pycache__/*
+PythonSuite/*/__pycache__/*
+PythonSuite/output/*
