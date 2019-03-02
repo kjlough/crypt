@@ -1,3 +1,4 @@
+package main;
 /*Creates the Cipher selection panel*/
 
 import java.awt.*;    // KEVIN!
@@ -13,8 +14,8 @@ public class MenuPanel extends JFrame
 	private JComboBox<String> options; 
 	String[] ciphers = {"Shift", "Affine", "Vigenere", "Playfair", "Hill"};	
 
-	public MenuPanel()														//Generate panels
-	{
+	public MenuPanel()									//Generate panels
+	{		
 		title = new JLabel("Crypt Tools");
 		title.setFont(new Font("Verdana", Font.BOLD, 100));
 		title.setHorizontalAlignment(JLabel.CENTER);

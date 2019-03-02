@@ -1,3 +1,4 @@
+package main;
 /*Contains methods that implement the Ciphers*/
 
 public class Ciphers	

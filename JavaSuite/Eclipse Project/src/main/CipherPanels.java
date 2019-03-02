@@ -1,3 +1,4 @@
+package main;
 /*Creates panels specific to each Cipher type*/
 
 import java.awt.*;
@@ -142,7 +143,7 @@ public class CipherPanels extends JPanel								//Generates Cipher specific inte
 	    {
 	    	if(event.getSource() == back)								//BACK button
 	    	{
-	    		MenuPanel window = Applet.getWindow();
+	    		MenuPanel window = Main.getWindow();
 	    		window.setToMenu();
 	    	}
 	    	

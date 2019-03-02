@@ -1,3 +1,4 @@
+package main;
 /*Contains auxilary methods*/
 
 //import com.wolfram.jlink.*;
