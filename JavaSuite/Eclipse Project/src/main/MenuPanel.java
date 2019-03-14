@@ -47,6 +47,9 @@ public class MenuPanel extends JFrame
 		add(title, BorderLayout.NORTH);
 		
 		setSize(WIDTH, HEIGHT);
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
 	}
 	
 	/* 

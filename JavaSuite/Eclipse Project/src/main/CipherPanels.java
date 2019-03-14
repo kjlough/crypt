@@ -143,7 +143,7 @@ public class CipherPanels extends JPanel								//Generates Cipher specific inte
 	    {
 	    	if(event.getSource() == back)								//BACK button
 	    	{
-	    		MenuPanel window = Main.getWindow();
+	    		MenuPanel window = Main.window; 						
 	    		window.setToMenu();
 	    	}
 	    	
