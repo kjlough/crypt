@@ -2,19 +2,25 @@ package com.cryptoapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class StartActivity extends Activity {
-    public boolean title_is_shifted = false;
+    final String UPPERCASE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    final String LOWERCASE_LETTERS = "abcdefghijklmnopqrstuvwxyz";
+
+    private boolean title_is_shifted = false;
+    private TextView title;
+    private Button cipher_button, puzz_button, hist_button, learn_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        final TextView title = findViewById(R.id.start_activity_title);
+        // Set up title animation.
+        title = findViewById(R.id.start_activity_title);
         title.setKeyListener(null); // Disable editing of title.
         title.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,12 +30,35 @@ public class StartActivity extends Activity {
                     title.setTextColor(getResources().getColor(R.color.popOfOrange, getTheme()));
                 }
                 else {
-                    title.setText("Max Vkrimh Tii"); // TODO: change this to an actual random shift cipher!
+                    title.setText(randomShift(getString(R.string.start_activity_title)));
                     title.setTextColor(getResources().getColor(R.color.popOfGreen, getTheme()));
                 }
 
                 title_is_shifted = !title_is_shifted;
             }
         });
+
+        // Set up buttons to go to new activities.
+        cipher_button = findViewById(R.id.cipher_button);
+
+    }
+
+    private String randomShift(String message) {
+        int rand_num = (int)Math.floor(Math.random() * 27);
+
+        for(int i = 0; i < message.length(); i++){
+            char c = message.charAt(i);
+
+            if(UPPERCASE_LETTERS.contains("" + c)) {
+                char newChar = UPPERCASE_LETTERS.charAt((UPPERCASE_LETTERS.indexOf(c) + rand_num) % 26);
+                message = message.substring(0, i) + newChar + message.substring(i+1);
+            }
+            else if(LOWERCASE_LETTERS.contains("" + c)) {
+                char newChar = LOWERCASE_LETTERS.charAt((LOWERCASE_LETTERS.indexOf(c) + rand_num) % 26);
+                message = message.substring(0, i) + newChar + message.substring(i+1);
+            }
+        }
+
+        return message;
     }
 }
