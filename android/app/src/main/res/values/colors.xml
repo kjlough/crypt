@@ -10,4 +10,6 @@
     <color name="popOfGreen">#5FBB97</color>
     <color name="popOfOrange">#e56424</color>
     <color name="invertPopOfGreen">#a04468</color>
+
+    <color name="lightText">#e8e8e8</color>
 </resources>
