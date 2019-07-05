@@ -1,6 +1,7 @@
 package com.cryptoapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ public class StartActivity extends Activity {
     private boolean title_is_shifted = false;
     private TextView title;
     private Button cipher_button, puzz_button, hist_button, learn_button;
+    private Intent cipher_intent, puzz_intent, hist_intent, learn_intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +35,46 @@ public class StartActivity extends Activity {
                     title.setText(randomShift(getString(R.string.start_activity_title)));
                     title.setTextColor(getResources().getColor(R.color.popOfGreen, getTheme()));
                 }
-
                 title_is_shifted = !title_is_shifted;
             }
         });
 
         // Set up buttons to go to new activities.
         cipher_button = findViewById(R.id.cipher_button);
-
+        cipher_intent = new Intent(this, CipherActivity.class);
+        cipher_button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                //TODO: create new activity for ciphers.
+                startActivity(cipher_intent);
+            }
+        });
+        puzz_button = findViewById(R.id.puzz_button);
+        puzz_intent = new Intent(this, PuzzleActivity.class);
+        puzz_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: create new activity for cryptograms.
+                startActivity(puzz_intent);
+            }
+        });
+        hist_button = findViewById(R.id.hist_button);
+        hist_intent = new Intent(this, HistoryActivity.class);
+        hist_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: create a new activity for the history of cryptography. (include booklist?)
+                startActivity(hist_intent);
+            }
+        });
+        learn_button = findViewById(R.id.learn_button);
+        learn_intent = new Intent(this, LearnActivity.class);
+        learn_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: create a new activity to teach some crypto parts of math. (modeled after brilliant.org)
+                startActivity(learn_intent);
+            }
+        });
     }
 
     private String randomShift(String message) {
