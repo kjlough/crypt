@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkBackground"
+    tools:context=".CipherActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp">
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="138dp"
+                android:fontFamily="serif-monospace"
+                android:text="Shift Cipher"
+                android:textColor="@color/popOfOrange"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="18dp"
+                android:text="Encrypt"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/textView2"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="17dp"
+                android:text="Shift Amount:"
+                android:textColor="@color/lightText"
+                android:textColorHint="@color/grey"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:text="Decrypt"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/enc_dec_switch"
+                app:layout_constraintStart_toEndOf="@+id/enc_dec_switch"
+                app:layout_constraintTop_toTopOf="@+id/enc_dec_switch" />
+
+            <Switch
+                android:id="@+id/enc_dec_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:theme="@style/Theme.AppCompat"
+                app:layout_constraintBottom_toBottomOf="@+id/textView3"
+                app:layout_constraintEnd_toStartOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+            <EditText
+                android:id="@+id/shift_amt_input"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:background="@color/darkBackground"
+                android:ems="10"
+                android:hint="0-25"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/lightText"
+                android:textColorHint="@color/grey"
+                app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="@+id/textView2" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/plaintext"
+                style="@android:style/Widget.Holo.Light.AutoCompleteTextView"
+                android:layout_width="330dp"
+                android:layout_height="194dp"
+                android:background="@drawable/rectangle_orange"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Enter plaintext here..."
+                android:inputType="textAutoCorrect|textMultiLine|textAutoComplete"
+                android:outlineProvider="bounds"
+                android:textAlignment="textStart"
+                android:textColor="@color/lightText"
+                android:textColorHint="@color/grey"
+                app:layout_constraintBottom_toTopOf="@+id/shift_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/ciphertext"
+                style="@android:style/Widget.Holo.Light.AutoCompleteTextView"
+                android:layout_width="330dp"
+                android:layout_height="194dp"
+                android:background="@drawable/rectangle_green"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Enter ciphertext here..."
+                android:inputType="textAutoCorrect|textMultiLine|textAutoComplete|textCapCharacters"
+                android:textAlignment="textStart"
+                android:textColor="@color/lightText"
+                android:textColorHint="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/shift_button" />
+
+            <Button
+                android:id="@+id/shift_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:text="Shift!"
+                android:typeface="monospace"
+                app:layout_constraintBottom_toTopOf="@+id/ciphertext"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plaintext" />
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
